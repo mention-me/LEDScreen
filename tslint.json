@@ -1,0 +1,85 @@
+{
+  "extends": [
+    "tslint:recommended",
+    "tslint-eslint-rules"
+  ],
+  "jsRules": {
+    "semicolon": [
+      true,
+      "always"
+    ],
+    "quotemark": [
+      true,
+      "single",
+      "jsx-double"
+    ],
+    "interface-name": false,
+    "trailing-comma": [
+      true,
+      {
+        "multiline": {
+          "functions": "never"
+        }
+      }
+    ],
+    "object-literal-sort-keys": false,
+    "no-trailing-whitespace": [
+      true,
+      "ignore-blank-lines"
+    ],
+    "no-unused-expression-chai": true,
+    "no-unused-expression": false,
+    "no-unexpected-multiline": true
+  },
+  "rules": {
+    "no-bitwise": false,
+    "semicolon": [
+      true,
+      "never"
+    ],
+    "quotemark": [
+      true,
+      "single",
+      "jsx-double"
+    ],
+    "interface-name": false,
+    "trailing-comma": [
+      true,
+      {
+        "multiline": {
+          "functions": "never"
+        }
+      }
+    ],
+    "object-literal-sort-keys": false,
+    "no-trailing-whitespace": [
+      true,
+      "ignore-blank-lines"
+    ],
+    "no-unused-expression-chai": true,
+    "no-unused-expression": false,
+    "jsx-no-multiline-js": false,
+    "jsx-alignment": false,
+    "import-blacklist": [
+      true,
+      "react-bootstrap"
+    ],
+    "no-unexpected-multiline": true,
+    "ordered-imports": [
+      true,
+      {
+        "grouped-imports": true
+      }
+    ],
+    "member-ordering": [
+      true,
+      {
+        "order": "instance-sandwich"
+      }
+    ]
+  },
+  "rulesDirectory": [
+    "tslint-no-unused-expression-chai"
+  ],
+  "defaultSeverity": "warning"
+}

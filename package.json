@@ -1,0 +1,25 @@
+{
+  "name": "cp5200-led",
+  "version": "1.0.0",
+  "description": "API Endpoint to controll CP5200 LED",
+  "main": "app.js",
+  "scripts": {
+    "start": "ts-node ./src/index.ts",
+    "lint": "tslint src/*.ts"
+  },
+  "author": "Matt Gill",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^10.12.18",
+    "arraybuffer-to-buffer": "0.0.5",
+    "net": "^1.0.2",
+    "require-env": "^0.2.1",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2"
+  },
+  "devDependencies": {
+    "tslint-no-unused-expression-chai": "^0.1.4",
+    "tslint": "^5.12.0",
+    "tslint-eslint-rules": "^5.4.0"
+  }
+}
