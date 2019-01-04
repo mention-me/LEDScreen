@@ -12,7 +12,7 @@ const SCREEN_PORT = parseInt(RequireEnv.require('SCREEN_PORT'), 10)
 
 // Create the message
 const instantMessageModel = new InstantMessageModel(
-    'BRING ON THE FRIDAY DRINKS UNICORNS',
+    'We love referrals!',
     FontColor.pink,
     ShowEffects.ScrollLeft
 )
