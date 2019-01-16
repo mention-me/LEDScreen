@@ -30,3 +30,9 @@ npm i
 npm start
 ```
 
+## Logs
+
+Logs are automatically rotated in the `logs` directory, two types of logs are created:
+
+- app.log (application logs)
+- request.log (which slack users posted messages, what they were and when)
