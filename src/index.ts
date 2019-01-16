@@ -19,6 +19,15 @@ const requestLogger = log4js.getLogger('request')
 
 logger.level = 'debug' || process.env.LOG_LEVEL
 
+/*
+ * Basically what this does is sets up the logging handlers: console, app, request
+ *
+ * Then tells log4js to log EVERYTHING to the console (stdout)
+ * And depending on the loggers context:
+ *      The app logs go to a file called app.log
+ *      The request logs go to a file called request.log
+ *
+ */
 log4js.configure({
     appenders: {
         console: {type: 'console'},
@@ -48,7 +57,7 @@ const sqs = new SQS({
  */
 const sqsPoller = new Consumer({
     sqs,
-    queueUrl: 'https://sqs.eu-west-1.amazonaws.com/124602426320/LED_SIGN',
+    queueUrl: SQS_QUEUE_URL,
     handleMessage: (messagePacket: any, done: any) => {
 
         const message: SQSLEDMessage = JSON.parse(messagePacket.Body)
@@ -100,22 +109,18 @@ const sendMessageToLedScreen = (ip: string, port: number, packet: Buffer, ack: a
     }).end()
 
     // Connect to the screen and send the packet
-    try {
-        client.connect(port, ip, () => {
-            logger.debug('Connected to LED Screen at ' + ip + ':' + port)
 
-            client.write(packet)
-            client.destroy()
+    client.connect(port, ip, () => {
+        logger.debug('Connected to LED Screen at ' + ip + ':' + port)
 
-            // Acknowledge the message so we don't receive it again
-            ack()
+        client.write(packet)
+        client.destroy()
 
-            logger.debug('Disconnecting from screen')
-        })
+        // Acknowledge the message so we don't receive it again
+        ack()
 
-    } catch (e) {
-        logger.error(e)
-    }
+        logger.debug('Disconnecting from screen')
+    })
 
 }
 
