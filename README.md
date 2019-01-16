@@ -1,10 +1,29 @@
 # LED Screen
 
+Listens to an AWS SQS queue for messages which adhere to the following message format:
+
+```
+{
+    username: string
+    screenIP: string
+    screenPort: number
+    message: string
+    colour: number
+    effect: number
+    showTimeMinutes: number
+}
+```
+
+And sends the message to an LED screen at the IP address and port in the message packet.
+
 ## Instructions
 
-Set environment variables: SCREEN_IP and SCREEN_PORT
+Set the following environment variables:
 
-Change the message in the code and tweak the settings in src/index.ts.
+- AWS_KEY
+- AWS_SECRET
+- SQS_QUEUE_LOCATION
+- SQS_QUEUE_URL
 
 ```
 npm i
