@@ -19,11 +19,13 @@ export class InstantMessageModel {
      * @param messageText
      * @param fontColor
      * @param showEffect
+     * @param showTimeMinutes
      */
-    constructor(messageText: string, fontColor: FontColor, showEffect: ShowEffects) {
+    constructor(messageText: string, fontColor: FontColor, showEffect: ShowEffects, showTimeMinutes: number) {
         this.messageText = messageText
         this.fontColour = fontColor
         this.showeffect = showEffect
+        this.loopCount = showTimeMinutes * 10
     }
 
     /**
