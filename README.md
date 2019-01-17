@@ -20,10 +20,10 @@ And sends the message to an LED screen at the IP address and port in the message
 
 Set the following environment variables:
 
-- AWS_KEY (must have privelages to consume the SQS queue)
-- AWS_SECRET
-- SQS_QUEUE_LOCATION (e.g. eu-west-1)
-- SQS_QUEUE_URL (the full queue URL)
+- `AWS_KEY` (must have privelages to consume the SQS queue)
+- `AWS_SECRET`
+- `SQS_QUEUE_LOCATION` (e.g. eu-west-1)
+- `SQS_QUEUE_URL` (the full queue URL)
 
 ```
 npm i
