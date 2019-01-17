@@ -89,7 +89,6 @@ const sqsPoller = new Consumer({
  * @param ip
  * @param port
  * @param packet
- * @param ack
  */
 const sendMessageToLedScreen = (ip: string, port: number, packet: Buffer) => {
     logger.info('About to send the message')
