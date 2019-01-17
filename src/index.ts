@@ -58,7 +58,7 @@ const sqs = new SQS({
 const sqsPoller = new Consumer({
     sqs,
     queueUrl: SQS_QUEUE_URL,
-    handleMessage: (messagePacket: any, done: any) => {
+    handleMessage: async (messagePacket: any) => {
 
         const message: SQSLEDMessage = JSON.parse(messagePacket.Body)
 
@@ -79,10 +79,7 @@ const sqsPoller = new Consumer({
         const packet = ControlGetProtocol.generateInstantMessagePacketBuffer(instantMessageModel)
 
         // Actually send it
-        sendMessageToLedScreen(message.screenIP, message.screenPort, packet, () => {
-            // On success, we ack the message to stop it from being received multiple times
-            done()
-        })
+        sendMessageToLedScreen(message.screenIP, message.screenPort, packet)
     }
 })
 
@@ -94,7 +91,7 @@ const sqsPoller = new Consumer({
  * @param packet
  * @param ack
  */
-const sendMessageToLedScreen = (ip: string, port: number, packet: Buffer, ack: any) => {
+const sendMessageToLedScreen = (ip: string, port: number, packet: Buffer) => {
     logger.info('About to send the message')
 
     const client = new net.Socket()
@@ -115,9 +112,6 @@ const sendMessageToLedScreen = (ip: string, port: number, packet: Buffer, ack: a
 
         client.write(packet)
         client.destroy()
-
-        // Acknowledge the message so we don't receive it again
-        ack()
 
         logger.debug('Disconnecting from screen')
     })
